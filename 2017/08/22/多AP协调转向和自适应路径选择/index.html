@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="yulei">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Advance Study,WIFI,Qualcomm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Qualcomm SON study (一) 7.14 Multi-AP Coordinated Steering and Adaptive Path Selection7.14.1 Multi-AP Coordinated Steering7.14.1.1 Design Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个">
+<meta name="keywords" content="Advance Study,WIFI,Qualcomm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多AP协调转向和自适应路径选择">
+<meta property="og:url" content="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/index.html">
+<meta property="og:site_name" content="yuleisoochow">
+<meta property="og:description" content="Qualcomm SON study (一) 7.14 Multi-AP Coordinated Steering and Adaptive Path Selection7.14.1 Multi-AP Coordinated Steering7.14.1.1 Design Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个">
+<meta property="og:locale" content="yulei">
+<meta property="og:image" content="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/CAP_RE_CLI.png">
+<meta property="og:image" content="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/steering_slots.png">
+<meta property="og:updated_time" content="2017-09-20T03:54:49.551Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多AP协调转向和自适应路径选择">
+<meta name="twitter:description" content="Qualcomm SON study (一) 7.14 Multi-AP Coordinated Steering and Adaptive Path Selection7.14.1 Multi-AP Coordinated Steering7.14.1.1 Design Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个">
+<meta name="twitter:image" content="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/CAP_RE_CLI.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/"/>
+
+
+
+
+
+  <title>多AP协调转向和自适应路径选择 | yuleisoochow</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="yulei">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yuleisoochow</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一蓑烟雨，几度春秋</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yulei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yuleisoochow">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">多AP协调转向和自适应路径选择</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-22T18:00:00+08:00">
+                2017-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Wireless/" itemprop="url" rel="index">
+                    <span itemprop="name">Wireless</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article</span>
+                
+                <span title="Words count in article">
+                  7,595
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time</span>
+                
+                <span title="Reading time">
+                  27
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Qualcomm SON study (一)</p>
+<h2 id="7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection"><a href="#7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection" class="headerlink" title="7.14 Multi-AP Coordinated Steering and Adaptive Path Selection"></a>7.14 Multi-AP Coordinated Steering and Adaptive Path Selection</h2><h3 id="7-14-1-Multi-AP-Coordinated-Steering"><a href="#7-14-1-Multi-AP-Coordinated-Steering" class="headerlink" title="7.14.1 Multi-AP Coordinated Steering"></a>7.14.1 Multi-AP Coordinated Steering</h3><h4 id="7-14-1-1-Design-Overview"><a href="#7-14-1-1-Design-Overview" class="headerlink" title="7.14.1.1 Design Overview"></a>7.14.1.1 Design Overview</h4><p>需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。</p>
+<p>广义而言，在通过Wi-Fi连接到CAP的中央AP和一个或多个扩展器的星形拓扑（如当前实现中假定的）中，应该考虑AP转向的点取决于哪个AP正在服务一个特定的STA。这是因为不仅要考虑STA对其服务AP的信号强度，还要考虑其流量必须通过网络占用的路径。</p>
+<p>由于家庭环境中的大多数客户端流量要么是注册到互联网，要么是注册到连接到CAP的设备，所以仅当STA信号强度才能优化，如果STA过早地移动到扩展器上，可能会降低性能。当范围扩展器将数据转发到CAP时，这种移动会导致性能下降，这是由于额外的Wi-Fi跳转引起的，反之亦然。另一方面，尽管距离扩展器的信号强度仍然从STA的角度来看仍然足够，但接近范围扩展器的STA可能更好地被CAP服务。</p>
+<p>下图显示了这种权衡的图示。这里，当客户端处于阴影区域时，最好由扩展器提供服务。 然而，当它处于非阴影区域时，尽管它可以看到范围扩展器信号强度很强，但它最好由CAP提供。</p>
+<p><img src="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/CAP_RE_CLI.png" style="max-height: 350px;"></p>
+<p>评估客户是否跨越这些地区是服务AP的责任。 服务AP监视客户端的上行RSSI（由活动客户端发送的上行链路数据包，空闲客户端周期性发送的上行QoS空值分组或客户端响应于QoS空值发送的ACK分组的信号强度测量） 当客户端首先被检测为空闲时，AP发送的数据包）。 根据配置参数知道是CAP还是RE的服务AP使用适当的阈值。 在CAP上，阈值较低以延迟AP转向，直到STA可能进入灰色区域。 在RE上，当客户端接近RE时，阈值更高，导致进程的下一阶段发生。</p>
+<a id="more"></a>
+<p>在上行RSSI阈值越过后，下一步是为服务AP请求STA执行802.11k信标测量，以便确定实际上是否有另一个AP是STA的更好候选者。这是因为在服务AP上单独的上行链路RSSI不可能判断STA是否正在靠近网络中的另一个AP或者移动得更远离所有的AP。 802.11k测量通过允许服务AP将其本身的信号强度与客户可以看到的相同ESS中的其他AP的信号强度进行比较来解决这种歧义。在默认配置中，只有当其他AP的下行信号强度大于服务AP的一定量时，服务AP才会将STA引导到不同的AP。所使用的确切值取决于STA是否朝向CAP，向量程扩展器或范围扩展器之间转移。注意，尽管实现支持目标AP被允许比服务目标AP弱的配置，但是在默认配置中不使用这种配置，因为某些客户端将拒绝此类转向尝试。</p>
+<p>由于AP指导决策基于802.11k测量，因此不支持此标准的客户端将不会成为AP转向的候选者（但仍可以进行带宽控制）。 CAP和RE之间的这种STA的移动将完全依赖于它们自己的漫游算法。 然而，由于在这种多AP协调转向模式中，所有AP具有相同的SSID，当服务AP的信号强度变弱时，大多数STA应该至少漫游。</p>
+<p>一旦确定了引导STA，就可以根据STA的能力和当前的转向行为分类来使用适当的空中机制。 多AP网络中的转向操作的机制多于单个AP环境中使用的机制。 为了获得最佳的转向成功概率，有必要启动与网络中其他节点的转向协调的节点，以便他们可以安装黑名单并酌情保留探测响应。</p>
+<p>没有这种协调，传统的指导机制通常会导致客户端在不同的BSS之间关联，而不是在CAP和RE之间的信号强度相似的情况下，或者客户端自己的BSS选择算法喜欢不同于目标BSS的BSS。 即使使用802.11v BSS转移管理请求（至少与当前客户端）进行转向在没有转向协调的情况下也不可靠。</p>
+<p>协调本身是通过使用IEEE1905.1格式发送的供应商特定消息完成的。 与转向本身相关的信息如下:</p>
+<ul>
+<li>Prepare for Steering Request/Response(准备转向请求/响应) - 将请求发送到网络中具有目标BSS信息和执行类型的所有节点。此外，客户端对于各种类型的转向的状态也被发送到所有节点，以及在发送准备转向请求的节点（具有0意味着没有污染）的本地的每个信道上剩余的污染时间。每个节点检查其自己的关于STA的信息（如果有的话），并且如果其状态指示客户端不被执行的转向类型禁止，则接受该请求。它还将污染信息记录在其本地数据库中，以避免转向被认为被污染的BSS。一旦从网络中的所有节点收集响应，如果所有响应都成功，则发起节点执行STA的导向（使用传统机制或802.11v BSS过渡管理请求），如果任何节点拒绝请求，则中止转向。</li>
+<li>Abort Steering Request/Response(中止转向请求/响应) - 当网络中的任何节点需要中止正在进行的转向尝试时，该请求被发送到网络中的所有节点。中止的原因很多，但通常包括：触发一个转向安全机制（如第16.2.4节所定义），或者其中一个节点拒绝转向尝试（由于本地具有排除STA的状态信息从被引导）。当一个节点接收到这种中止时，它会删除黑名单，并取消其在目标BSS上关联的期望值。这样做后，它发送响应。</li>
+<li>Authentication Reject Sent(认证拒绝发送) - 由于STA尝试在黑名单BSS上进行身份验证，当消息向STA发送具有拒绝代码的认证消息时，该消息被发送。这允许服务AP使用适当的禁止定时器并且还监视网络中的其他AP的认证拒绝以用于转向安全机制中。</li>
+<li>STA Info Request/Response(STA信息请求/响应) - 该请求消息允许认为它没有关于STA从网络中的其他节点请求它的完整或最新信息的AP。使用这种情况的典型情况是当STA将AP关联到AP而不在那里引导时。在这种情况下，新服务的AP可能不知道STA在非服务频带上的能力，也可能不知道其当前的转向状态。通过发送此请求，所有其他AP可以发送其最新信息，新服务的AP可以采取信息的并集（使用为转向状态接收的最悲观的值）。STA信息响应包含当地的污染信息，客户端能力以及客户的状态。</li>
+</ul>
+<p>除了编排转向本身的消息之外，协调转向实现的另一方面与单个AP转向不同。具体来说，只有通过CAP为AP分配了转向槽时，才允许主动卸载转向（其中STA从超载带转向）和主动升级转向（其中STA从2.4 GHz转向5 GHz）。</p>
+<p>这些时隙之前是从所有节点收集平均利用率信息。然后，该信息与所有AP共享，同时一个AP被分配转向槽。 CAP将循环通过网络中的节点（包括自身），一次分配一个转向槽。</p>
+<p>在其转向槽期间，分配的AP只能执行一个主动卸载或升级转向。这种限制是因为在多AP网络中，由于可能性影响到回程所使用的路径，所以难以预测这种转向的影响。</p>
+<p>在AP执行这样的操作之后，或者如果它确定没有具有这样的转向的STA，则通知CAP完成负载平衡。如果STA被引导，则CAP将在下一个插槽的开始处引起转向停电。只有在该转向停电期限到期后，才会为新的AP分配一个转向槽。使用停电期可确保在中等利用率平均窗口（默认为30秒）的持续时间内可以测量转向的影响。</p>
+<p>如果分配了负载平衡插槽的AP不会引导任何STA并在转向槽的前半部分（默认情况下）作出响应，CAP将按序列中的下一个节点分配插槽的剩余部分。在主动转向合格的STA仅在AP的子集上关联的情况下，可以加快周期。</p>
+<p>下图显示了CAP为3 AP网络中不同节点分配转向插槽的示例。 这里假设每个节点在其分配的时隙期间执行主动转向，并且因此转向停电跟随其时隙。</p>
+<p><img src="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/steering_slots.png" style="max-height: 350px;"></p>
+<p>实现这种开槽转向方案的消息如下：</p>
+<ul>
+<li>Average Utilization Request[平均利用率请求] - 由CAP定期发送给每个RE，要求他们回报他们正在运行的每个渠道的平均利用率。</li>
+<li>Average Utilization Report (single)[平均利用率报告（单一）] - 由RE发送回CAP，平均利用率自上次平均利用率请求以来，在每个操作信道上测量的平均利用率。</li>
+<li>Average Utilization Report (aggregate)[平均利用率报告（汇总）] - 由CAP发送给所有RE，以传达最后一个测量窗口中网络中所有节点测量的最大利用率。 这确保所有节点知道最坏的情况利用率。</li>
+<li>Load Balancing Allowed[负载平衡允许] - 由CAP发送到单个RE，以指示它现在可以执行主动卸载和主动升级转向。 此消息还传达了总平均利用率报告丢失的最大利用率。</li>
+<li>Load Balancing Complete[负载平衡完成] - 由RE发送回CAP以指示在其转向槽期间是否执行任何主动转向。</li>
+<li>NOTE  即使节点没有分配转向槽，仍然允许某些形式的转向。 具体地，允许空转转向，因为期望它将限于对中等利用率没有影响（因为当前空闲的STA在转向之后更有可能不继续空闲）。 主动降级转向，AP转向和干扰避免转向（IAS）也是允许的，因为这样做是为了确保客户端不会突然失去Wi-Fi连接。</li>
+</ul>
+<p>最后，重要的是网络中的所有节点具有相同的转向配置参数（第16.2节所述），以便它们具有每个STA的转向状态的一致视图。 目前没有确保这样的消息传递，因此在调整配置参数时必须注意在所有节点上进行相同的更改。</p>
+<h4 id="7-14-1-2-Implementation-Details"><a href="#7-14-1-2-Implementation-Details" class="headerlink" title="7.14.1.2 Implementation Details"></a>7.14.1.2 Implementation Details</h4><p>实现多AP协调转向的大部分逻辑利用为单个AP转向开发的代码。 为了支持重用此代码，适用于单AP和多AP情况的代码内置到名为liblbcmnlibs.so的共享库中。 在大多数模块中，定义了特定的扩展点，其中可以在lbd源树中提供单个AP转向的实现，并且可以在水源树中提供用于多AP转向的实现。 所有这些多AP实现方面都包含在水源树的wlb目录中。 以下是每个模块的多AP方面：</p>
+<ul>
+<li>bandmon - 实现CAP上转向槽的循环分配和在RE上等待这样的分配的逻辑。 还负责平均从pcwService接收的中等利用率报告，并在响应平均利用请求请求时提供这些报告。</li>
+<li>estimator - 为处理包含远程节点BSS的802.11k信标报告增加了新的逻辑。 具体来说，它使用拓扑数据库（基于IEEE1905.1拓扑消息传递中的一些供应商特定TLV）来解析远程BSS的物理层能力（空间流数，标准和传输功率），以便可以 用于估计速率和通话时间。 该模块的多AP版本还添加了未包含在报告中的相同频带BSS的估计（例如在不同信道上操作的那些）。</li>
+<li>stamon - 当更新的RSSI可用时，该模块的多AP特定部分确定是否已经满足AP转向标准。 如果AP转向要求没有得到满足，则使用来自单个AP代码的正常升级/降级转向逻辑。</li>
+<li>steeralg - 该模块包含基于802.11k信标报告为客户端选择最佳AP的逻辑，然后从中确定用于指导客户端的最佳通道。 当当前的AP是最好的AP时，它将使用与单个AP情况相同的逻辑。 该模块还具有新的逻辑，根据转向类型选择哪个通道用于802.11k信标测量，对于AP转向触发器而言，优选5 GHz，在其他情况下使用单个AP规则。</li>
+<li>steerexec - 该模块包含与指导协调消息传递的必要集成。 它负责触发所有转向相关消息的发送和处理收到的任何响应消息。</li>
+<li>wlanif - 该模块包含附加的逻辑，以便能够将BSSIDs从其内部表示解析出来，即使这些BSSID在远程节点上也是如此。 在远程节点情况下，使用拓扑数据库中的信息完成分辨率（由IEEE1905.1拓扑消息传递）。 该模块还确保在用于扩展器自动模式切换的IE中设置Wi-Fi自组织网络（SON）模式功能，如部分</li>
+</ul>
+<p>除了现有模块的多AP版本，还有一个名为steermsg的新模块。 该模块包含发送和接收上述转向协调消息的代码。 它还负责在收到STA信息响应（或其他消息中包含的类似信息）时更新站数据库中的信息。</p>
+<h4 id="7-14-1-3-Available-Debugging-Information"><a href="#7-14-1-3-Available-Debugging-Information" class="headerlink" title="7.14.1.3 Available Debugging Information"></a>7.14.1.3 Available Debugging Information</h4><p>实现多AP协调转向的模块的调试CLI与其单个AP实现不变。 但是，当手动执行AP转向（使用steerexec转向）时，必须知道AP ID作为MAC地址后的第一个参数。 如果网络中只有两个AP（CAP和一个RE），则假设另一个AP的ID为0，通常是安全的。另一方面，在多AP网络中，可以在两AP中检测到远端AP 从运行到运行的顺序。 要确定哪个AP是哪个，请使用td s debug CLI命令。 此输出的示例如下所示。</p>
+<h3 id="7-14-2-Adaptive-Path-Selection"><a href="#7-14-2-Adaptive-Path-Selection" class="headerlink" title="7.14.2 Adaptive Path Selection"></a>7.14.2 Adaptive Path Selection</h3><h4 id="7-14-2-1-Design-Overview"><a href="#7-14-2-1-Design-Overview" class="headerlink" title="7.14.2.1 Design Overview"></a>7.14.2.1 Design Overview</h4><p>目前市场上的许多扩展器是双频双向并发的，并且在两个频带上连接到主AP（这里称为中央AP或CAP）。 如下图所示，可以将这样的网络视为在每个频带上具有回程接口，并且在每个频带上提供与附近STA的连接的AP接口（称为接入接口）。</p>
+<p>传统上，这些DBDC扩展器实现了在向上游发送流量时使用的接口的固定选择。这通常是为了避免网络中可能导致广播风暴的桥接环路。这样的固定转发方案也可以与纯粹作为学习桥梁的CAP一起工作，因为CAP将在单个接口上学习RE（无论是有线还是无线）之后的RE和客户端的MAC地址。这意味着上行链路和下行链路路径将相同，并最终由RE选择上行链路路径的方式控制。</p>
+<p>通常使用两个固定转发模型，即将流量转发到与与RE相关联的STA所使用的相同信道上的回程接口或将转发流量转发到另一个频带上的接口。这些方案中的每一种都有优缺点。交叉频段方法消除了访问链路和回程链路之间自我争用的影响，有时可以导致更好的性能。然而，由于2.4GHz和5GHz（例如通常为20MHz和80MHz）的带宽不同，这种交叉频带转发可导致2.4GHz回程接口成为在5GHz上相关客户的瓶颈。另一方面，相同的频带桥接可能导致另一频带的利用不足。根据客户端在整个频段的分布情况，这可能会导致所有客户端的性能显着降低。</p>
+<p>自适应路径选择（APS）允许在CAP和RE都实现该算法时，在每个目的地或甚至每个流的基础上（具有下面的一些限制）可以采用不同的转发路径。该算法有三个核心方面，即循环避免，拓扑和链路度量收集，以及实际的路径选择和负载平衡。这些将依次被考虑。</p>
+<p><strong><em>Loop Avoidance</em></strong></p>
+<p>如上所述，当多个接口连接到同一个上游设备时，重要的是确保数据包不会以无限循环转发。可以使用传统的生成树协议来避免桥接拓扑中的循环，但是它们导致在主要端口（称为根端口）失败之前，不会使用上游面向接口之一。由于无线网络上的条件不像有线网络那样可预测，仅限于单个接口可能是次优的。</p>
+<p>APS通过引入上游和下游端口（在实现中称为非中继和中继端口）的概念来解决这个问题。对于面向上游的端口，它们之间不允许桥接以避免环路。另外，只允许一个上行端口向下游端口传送广播流量，以避免看到广播帧两次。另一方面，对下游的港口没有限制。帧之间可以转发帧。</p>
+<p>确定端口是否应该是下游或上游端口当前是基于启发式的。 STA接口总是被认为是上游，因此被放置在不相关的组中。 AP接口和以太网接口被认为是下游接口，因此被放置在中继组中。这可以处理RE充当无线扩展器的拓扑。当RE设备通过以太网或通过单独的PLC网络连接到CAP时，这些启发式将导致桥接回路。但是，如果此功能与第7.15节所述的RE布局和自动配置功能结合使用，则可以支持这种拓扑（只要设备使用以太网连接启动），因为STA接口将被禁用。</p>
+<p><strong><em>Topology and Link Metric Collection(拓扑和链接指标集)</em></strong></p>
+<p>为了使路径选择算法做出关于如何转发流量的决策，需要收集有关网络拓扑的信息和网络链路的强度。通过使用IEEE1905.1拓扑发现，查询，响应和通知消息以及一些供应商特定的扩展来了解网络拓扑。发现消息使得节点能够确定哪些接口连接到其他IEEE1905.1设备，而查询和响应消息允许节点从远程节点获取完整的拓扑信息。该信息包括远程接口（该节点未直接连接的接口）和每个接口上学习的MAC地址。</p>
+<p>除IEEE1905.1提供的信息外，还提供了附加信息，其中包括相关STA的列表（以帮助消除网络中给定的MAC地址实际位于何处）以及其他AP接口的Wi-Fi功能信息。当STA在本地关联以帮助其他节点快速更新其桥接信息时，节点还包括拓扑通知消息中的附加信息，因为正常拓扑通知不包括任何信息，并要求节点查询发送节点以确定实际改变的内容。</p>
+<p>链接度量信息是进行智能转发决策的另一个关键因素。 IEEE1905.1定义了一个节点可以向另一个节点查询关于其链路的物理和MAC层特性的信息的方法。然而，由于标准没有明确定义如何衡量或解释这些度量，所以附加的供应商特定度量包括在链路度量查询/响应消息中。这些供应商特定的指标由发送节点估计的TCP和UDP流量的容量值组成。这些值用于确定给定客户端的路径。</p>
+<p>此外，该标准仅定义IEEE1905.1设备之间的链路度量。由于APS基于关于最终跳跃（关联的STA）的信息进行决策，所以附加链路度量信息由具有该APS特征的节点交换。这些节点还周期性地向彼此发送伪帧，以确保它们可以从Wi-Fi驱动程序和固件获得更新的速率值，因为这在下面描述的容量计算中使用。</p>
+<p>对于每种类型的流量（TCP和UDP），节点估计两个容量值。 UDP满容量是假设完全空闲介质可实现的应用层数据速率的估计。该值来自于速率控制算法选择的最后一个物理层数据速率。将最后的传输速率与两个阈值进行比较，以确定其落入的三个区域中的哪一个。应用不同的缩放因子（基于给定物理层速率的有效数据速率的模拟）来获得实际的满容量值。应用另外的缩放因子来获得TCP的满容量值。该比例因子估计使用TCP时引起的附加协议开销的影响。然后根据较低层报告的分组错误率进一步调整这些满容量值。</p>
+<p>在获得满容量值之后，可用容量通过将整个容量缩放到介质上可用的剩余时间（达到可配置的最大利用率小于100％）来确定。这是在路径选择决策中使用的这个值。</p>
+<p><strong><em>Path Selection and Load Balancing</em></strong></p>
+<p>自适应路径选择通过组合拓扑和链路度量信息来达到要为特定目的地或流量采用的最佳路径。在高层次上，它包含两个进程，一个用于选择网络中的默认路径（适应加载条件更改），另一个过程中更改网络中现有流的路径。</p>
+<p>默认路径选择过程在每个节点上运行，并确定连接到网络中其他节点的所有MAC地址的最佳出口接口。这种确定是在周期性的基础上进行的，以及在发生重要事件时进行。这样的重大事件可以包括网络中其他节点的链路上的变化和介质利用率的大幅变化或物理层速率。</p>
+<p>在确定给定MAC地址的默认出口接口时，会为每个可能的路径计算端对端路径。当目的地MAC地址不是Wi-Fi STA（例如，它是AP设备本身或通过以太网连接到这种设备的设备）时，APS选择具有最佳可用容量的接口。</p>
+<p>当目的地MAC地址是与相邻AP相关联的STA时，估计到达STA的所有可能的回程路径的端到端数据速率。当这条路径涉及对回程链路和访问链路使用相同的信道时，通过将两个可用容量相乘，然后将其除以它们的总和来估计自我争用的影响。当路径涉及用于回程和接入链路的不同信道时，可用容量的最小值被用作端到端路径。</p>
+<p>例如，在下图所示的拓扑中，在回程和接入链路上使用2.4 GHz的路径的端对端数据速率将被估计为（Rb，2×Ra）/（Rb，2 + Ra），而在回程链路上使用5GHz的路径和接入链路上的2.4GHz的路径将被估计为min（Rb，5，Ra）。</p>
+<p>另一个特殊情况是确定从一个RE（RE1）到另一个RE（RE2）或与RE2相关联的设备的路径。由于CAP将执行BSS内桥接，因此APS将考虑在每个共享信道上存在从RE1到RE2的虚拟链路。以上使用的自我竞争计算将应用于此虚拟链接。任何进一步的争用影响将适用于与RE2相关联的Wi-Fi STA的最终跳转。</p>
+<p>自适应路径选择中的第二个过程是可以将活动流移动到新接口的负载平衡过程。通过其目的地MAC地址和数据包中的某些字段（通常是源地址和目标地址和端口号）的8位哈希识别流。由于散列的大小受限制，两个不同的流可能映射到相同的散列。然而，请注意，如果它们注定为两个不同的MAC地址，则它们仍将被视为单独的流。</p>
+<p>该流程移动过程可以通过网络拓扑的变化以及通道上的介质利用率上升到高于可配置值（默认为70％）时触发。对于拓扑变化，算法根据可用容量寻找新的接口。响应中等订阅是一个多步骤的过程。首先，超额认购界面上的所有流量都按照对中等利用率的贡献进行排名。然后，从最高贡献者开始，检查具有到目的地的链接的每个接口。如果找到一个具有可配置量（默认值为10％）的接口比流量更多的容量，则选择该接口。如果没有找到接口，则检查下一个最高流。这个过程一直持续到一个流动被移动或一定数量的流量被检查，没有一个候选人。</p>
+<p>在由于过度订阅而使流动移动之后，任何进一步的负载平衡被延迟，直到更新的媒体利用信息可用。这样可以防止太多的流动被移动，因为它们对利用率的影响尚未得到充分反映。</p>
+<h4 id="7-14-2-2-Implementation-Details"><a href="#7-14-2-2-Implementation-Details" class="headerlink" title="7.14.2.2 Implementation Details"></a>7.14.2.2 Implementation Details</h4><p>自适应路径选择的实现被分为两个组件，其中一个组件位于控制路径中，另一个组件位于数据路径中。</p>
+<p><strong><em>Control Path - hyd</em></strong></p>
+<p>控制路径部分负责配置桥接器，并根据拓扑和链路量度变化选择路径。 hyd守护进程包含控制路径实现。 实现路径选择的关键模块如下：</p>
+<ul>
+<li>tdService - 负责基于IEEE1905.1消息传递学习网络拓扑的模块。</li>
+<li>pcwService - 该模块处理来自所有Wi-Fi接口的驱动程序的链接度量信息。 它将原始物理层指标转换为容量值，并将其提供给其他模块。 它还具有确保在APS负载平衡操作发生后更新中等利用率信息的逻辑。</li>
+<li>psService - 这是实现上述路径选择算法的核心模块。 它对来自其他模块的事件做出反应，指示拓扑或链接指标的变化，并相应地重新编程桥接表。</li>
+<li>heService - 此模块收集网络中有效流量的周期性字节数样本，并估计其速率。 当确定如何将流从一个接口移动到另一个接口时，psService将使用此信息。</li>
+</ul>
+<p><strong><em>Data Path – Bridging infrastructure</em></strong></p>
+<p>自适应路径选择数据路径使用连接到桥接器的Linux内核网络过滤器钩子进行某些操作（例如转发，本地输入等）来实现。 这些钩子在数据路径中实现APS的三个关键方面：</p>
+<ul>
+<li><p>Preventing bridging loops - 转发和泛洪钩子阻止在上游（非中继）接口上接收到的数据包在另一个上游接口上转发。它们还确保只有一个广播帧被传递到下游（中继）接口。</p>
+</li>
+<li><p>Default path selection control - 名为H-Default的新桥接表可以由用户空间编程，以覆盖使用桥本身的转发数据库（FDB）所发生的桥接。该表由目的MAC地址和用于UDP和非UDP流量的接口名称组成。</p>
+</li>
+<li><p>Active path selection control - 名为H-Active的新桥接表允许控制用于单个流的接口。当HDefault或FDB中的条目匹配时，将创建此表中的条目。该条目跟踪最终目的地址，流的哈希，流的统计信息和出口接口（以及这里未涉及的一些其他信息）。用户空间可以写入一个条目，以强制流程使用不同的出口接口</p>
+</li>
+</ul>
+<p>当hyd连接到桥上时，这些钩子被激活。 当处于活动状态时，为给定目标地址（DA）选择出口接口的过程如下：</p>
+<ul>
+<li>根据数据包中的字段计算流的散列，并查找H-Active以确定是否存在（DA，散列）对。 如果是这样，请更新统计信息并使用所选的出口接口。 否则，继续下一步。</li>
+<li>在H-Default表中查找DA。 如果发现匹配，请使用根据数据包是UDP还是非UDP指定的出口接口。</li>
+<li>当FDB中有条目时，使用正常的基于FDB的转发规则。 如果没有发现条目，则在所有下行（中继）端口和一个指定的广播上行（非中继）端口上泛洪，不包括接收到该数据包的接口。 该逻辑也适用于广播/组播流量</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Advance-Study/" rel="tag"># Advance Study</a>
+          
+            <a href="/tags/WIFI/" rel="tag"># WIFI</a>
+          
+            <a href="/tags/Qualcomm/" rel="tag"># Qualcomm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/10/C预处理中井号和井井号的作用/" rel="next" title="C预处理中#号和##号的作用">
+                <i class="fa fa-chevron-left"></i> C预处理中#号和##号的作用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/22/Qualcomm平台SON自动配置的命令实现/" rel="prev" title="Qualcomm平台SON自动配置的命令实现">
+                Qualcomm平台SON自动配置的命令实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="yulei" />
+          <p class="site-author-name" itemprop="name">yulei</p>
+           
+              <p class="site-description motion-element" itemprop="description">嵌入式领域的码农和coding爱好者</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yuleisoochow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection"><span class="nav-number">1.</span> <span class="nav-text">7.14 Multi-AP Coordinated Steering and Adaptive Path Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-14-1-Multi-AP-Coordinated-Steering"><span class="nav-number">1.1.</span> <span class="nav-text">7.14.1 Multi-AP Coordinated Steering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-1-1-Design-Overview"><span class="nav-number">1.1.1.</span> <span class="nav-text">7.14.1.1 Design Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-1-2-Implementation-Details"><span class="nav-number">1.1.2.</span> <span class="nav-text">7.14.1.2 Implementation Details</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-1-3-Available-Debugging-Information"><span class="nav-number">1.1.3.</span> <span class="nav-text">7.14.1.3 Available Debugging Information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-14-2-Adaptive-Path-Selection"><span class="nav-number">1.2.</span> <span class="nav-text">7.14.2 Adaptive Path Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-2-1-Design-Overview"><span class="nav-number">1.2.1.</span> <span class="nav-text">7.14.2.1 Design Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-2-2-Implementation-Details"><span class="nav-number">1.2.2.</span> <span class="nav-text">7.14.2.2 Implementation Details</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yulei</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
