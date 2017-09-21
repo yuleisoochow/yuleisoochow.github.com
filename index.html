@@ -317,6 +317,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/自适应路径选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yulei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yuleisoochow">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/自适应路径选择/" itemprop="url">自适应路径选择</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-20T18:00:00+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Wireless/" itemprop="url" rel="index">
+                    <span itemprop="name">Wireless</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article</span>
+                
+                <span title="Words count in article">
+                  4,549
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time</span>
+                
+                <span title="Reading time">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Adaptive-path-selection"><a href="#Adaptive-path-selection" class="headerlink" title="Adaptive path selection"></a>Adaptive path selection</h3><h4 id="Design-overview"><a href="#Design-overview" class="headerlink" title="Design overview"></a>Design overview</h4><p>目前市场上的许多扩展器都是双频双向并发的，并且在两个频带上连接到主AP（这里称为中央AP或CAP）。 如下图所示，可以将这样的网络视为在每个频带上具有回程接口，并且在每个频带上提供与附近STA的连接的AP接口（称为接入接口）。</p>
+<p><img src="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/path_selection_1.png" style="max-height: 350px;"></p>
+<p>传统上，这些DBDC扩展器实现了在向上游发送流量时使用的接口的固定选择。这通常是为了避免网络中可能导致广播风暴的桥接环路。这样的固定转发方案也可以与纯粹作为学习桥梁的CAP一起工作，因为CAP将在单个接口上学习RE（无论是有线还是无线）之后的RE和客户端的MAC地址。这意味着上行链路和下行链路路径是相同的，并且由RE如何选择上行链路路径来控制。</p>
+<p>通常使用两个固定转发模型，即将流量转发到与与RE相关联的STA所使用的相同信道上的回程接口或将转发流量转发到另一个频带上的接口。这些方案中的每一个都有优缺点。交叉频段方法消除了访问链路和回程链路之间的自我争用的影响，有时可以导致更好的性能。然而，由于2.4 GHz和5 GHz（例如，通常为20 MHz和80 MHz）的带宽不同，这种交叉频带转发可能导致2.4 GHz回程接口成为5 GHz相关客户的瓶颈。另一方面，相同的频带桥接可能导致另一频带的利用不足。根据客户端在整个频段的分布情况，这可能会导致所有客户端的性能显着降低。</p>
+<p>自适应路径选择（APS）允许在CAP和RE两者都实现该算法时，每个目的地或甚至每个流中采用不同的转发路径（以下有一些限制）。该算法有三个核心方面，即循环避免，拓扑和链路度量收集，以及实际的路径选择和负载平衡。这些将依次被考虑。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/20/自适应路径选择/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/27/Low_RSSI_Threshold_Issue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1215,7 +1396,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/多AP协调转向/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yulei">
@@ -1234,7 +1415,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/22/多AP协调转向和自适应路径选择/" itemprop="url">多AP协调转向和自适应路径选择</a></h1>
+                <a class="post-title-link" href="/2017/08/22/多AP协调转向/" itemprop="url">多AP协调转向</a></h1>
         
 
         <div class="post-meta">
@@ -1300,7 +1481,7 @@
                   <span class="post-meta-item-text">Words count in article</span>
                 
                 <span title="Words count in article">
-                  7,595
+                  7,833
                 </span>
               
 
@@ -1316,7 +1497,7 @@
                   <span class="post-meta-item-text">Reading time</span>
                 
                 <span title="Reading time">
-                  27
+                  28
                 </span>
               
             </div>
@@ -1339,7 +1520,7 @@
       
         
           <p>Qualcomm SON study (一)</p>
-<h2 id="7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection"><a href="#7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection" class="headerlink" title="7.14 Multi-AP Coordinated Steering and Adaptive Path Selection"></a>7.14 Multi-AP Coordinated Steering and Adaptive Path Selection</h2><h3 id="7-14-1-Multi-AP-Coordinated-Steering"><a href="#7-14-1-Multi-AP-Coordinated-Steering" class="headerlink" title="7.14.1 Multi-AP Coordinated Steering"></a>7.14.1 Multi-AP Coordinated Steering</h3><h4 id="7-14-1-1-Design-Overview"><a href="#7-14-1-1-Design-Overview" class="headerlink" title="7.14.1.1 Design Overview"></a>7.14.1.1 Design Overview</h4><p>需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。</p>
+<h3 id="Multi-AP-Coordinated-Steering"><a href="#Multi-AP-Coordinated-Steering" class="headerlink" title="Multi-AP Coordinated Steering"></a>Multi-AP Coordinated Steering</h3><h4 id="Design-Overview"><a href="#Design-Overview" class="headerlink" title="Design Overview"></a>Design Overview</h4><p>需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。</p>
 <p>广义而言，在通过Wi-Fi连接到CAP的中央AP和一个或多个扩展器的星形拓扑（如当前实现中假定的）中，应该考虑AP转向的点取决于哪个AP正在服务一个特定的STA。这是因为不仅要考虑STA对其服务AP的信号强度，还要考虑其流量必须通过网络占用的路径。</p>
 <p>由于家庭环境中的大多数客户端流量要么是注册到互联网，要么是注册到连接到CAP的设备，所以仅当STA信号强度才能优化，如果STA过早地移动到扩展器上，可能会降低性能。当范围扩展器将数据转发到CAP时，这种移动会导致性能下降，这是由于额外的Wi-Fi跳转引起的，反之亦然。另一方面，尽管距离扩展器的信号强度仍然从STA的角度来看仍然足够，但接近范围扩展器的STA可能更好地被CAP服务。</p>
 <p>下图显示了这种权衡的图示。这里，当客户端处于阴影区域时，最好由扩展器提供服务。 然而，当它处于非阴影区域时，尽管它可以看到范围扩展器信号强度很强，但它最好由CAP提供。</p>
@@ -1347,7 +1528,7 @@
 <p>评估客户是否跨越这些地区是服务AP的责任。 服务AP监视客户端的上行RSSI（由活动客户端发送的上行链路数据包，空闲客户端周期性发送的上行QoS空值分组或客户端响应于QoS空值发送的ACK分组的信号强度测量） 当客户端首先被检测为空闲时，AP发送的数据包）。 根据配置参数知道是CAP还是RE的服务AP使用适当的阈值。 在CAP上，阈值较低以延迟AP转向，直到STA可能进入灰色区域。 在RE上，当客户端接近RE时，阈值更高，导致进程的下一阶段发生。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/08/22/多AP协调转向和自适应路径选择/#more" rel="contents">
+            <a class="btn" href="/2017/08/22/多AP协调转向/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1782,7 +1963,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

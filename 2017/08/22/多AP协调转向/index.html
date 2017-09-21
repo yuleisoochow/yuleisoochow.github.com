@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="Qualcomm SON study (一) 7.14 Multi-AP Coordinated Steering and Adaptive Path Selection7.14.1 Multi-AP Coordinated Steering7.14.1.1 Design Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个">
+<meta name="description" content="Qualcomm SON study (一) Multi-AP Coordinated SteeringDesign Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。 广义而言，在通过Wi-Fi连接到CAP的中央AP和一个或多个扩展器的星形拓">
 <meta name="keywords" content="Advance Study,WIFI,Qualcomm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多AP协调转向和自适应路径选择">
-<meta property="og:url" content="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/index.html">
+<meta property="og:title" content="多AP协调转向">
+<meta property="og:url" content="http://yoursite.com/2017/08/22/多AP协调转向/index.html">
 <meta property="og:site_name" content="yuleisoochow">
-<meta property="og:description" content="Qualcomm SON study (一) 7.14 Multi-AP Coordinated Steering and Adaptive Path Selection7.14.1 Multi-AP Coordinated Steering7.14.1.1 Design Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个">
+<meta property="og:description" content="Qualcomm SON study (一) Multi-AP Coordinated SteeringDesign Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。 广义而言，在通过Wi-Fi连接到CAP的中央AP和一个或多个扩展器的星形拓">
 <meta property="og:locale" content="yulei">
 <meta property="og:image" content="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/CAP_RE_CLI.png">
 <meta property="og:image" content="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/steering_slots.png">
-<meta property="og:updated_time" content="2017-09-20T03:54:49.551Z">
+<meta property="og:updated_time" content="2017-09-20T07:15:15.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多AP协调转向和自适应路径选择">
-<meta name="twitter:description" content="Qualcomm SON study (一) 7.14 Multi-AP Coordinated Steering and Adaptive Path Selection7.14.1 Multi-AP Coordinated Steering7.14.1.1 Design Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个">
+<meta name="twitter:title" content="多AP协调转向">
+<meta name="twitter:description" content="Qualcomm SON study (一) Multi-AP Coordinated SteeringDesign Overview需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。 广义而言，在通过Wi-Fi连接到CAP的中央AP和一个或多个扩展器的星形拓">
 <meta name="twitter:image" content="http://ov4tcg1c8.bkt.clouddn.com/qualcomm_son/CAP_RE_CLI.png">
 
 
@@ -137,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/22/多AP协调转向/"/>
 
 
 
 
 
-  <title>多AP协调转向和自适应路径选择 | yuleisoochow</title>
+  <title>多AP协调转向 | yuleisoochow</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/多AP协调转向和自适应路径选择/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/多AP协调转向/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yulei">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多AP协调转向和自适应路径选择</h1>
+          <h1 class="post-title" itemprop="name headline">多AP协调转向</h1>
         
 
         <div class="post-meta">
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">Words count in article</span>
                 
                 <span title="Words count in article">
-                  7,595
+                  7,833
                 </span>
               
 
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">Reading time</span>
                 
                 <span title="Reading time">
-                  27
+                  28
                 </span>
               
             </div>
@@ -441,7 +441,7 @@
 
       
         <p>Qualcomm SON study (一)</p>
-<h2 id="7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection"><a href="#7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection" class="headerlink" title="7.14 Multi-AP Coordinated Steering and Adaptive Path Selection"></a>7.14 Multi-AP Coordinated Steering and Adaptive Path Selection</h2><h3 id="7-14-1-Multi-AP-Coordinated-Steering"><a href="#7-14-1-Multi-AP-Coordinated-Steering" class="headerlink" title="7.14.1 Multi-AP Coordinated Steering"></a>7.14.1 Multi-AP Coordinated Steering</h3><h4 id="7-14-1-1-Design-Overview"><a href="#7-14-1-1-Design-Overview" class="headerlink" title="7.14.1.1 Design Overview"></a>7.14.1.1 Design Overview</h4><p>需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。</p>
+<h3 id="Multi-AP-Coordinated-Steering"><a href="#Multi-AP-Coordinated-Steering" class="headerlink" title="Multi-AP Coordinated Steering"></a>Multi-AP Coordinated Steering</h3><h4 id="Design-Overview"><a href="#Design-Overview" class="headerlink" title="Design Overview"></a>Design Overview</h4><p>需要考虑的多AP转向有两个方面。第一个是确定接触点之间的转向可能适合的点，以及如何确定它是确实有必要的。第二个是如何协调转向本身，并确保网络中没有太多的流失。这些方面的每一个反过来又被考虑。</p>
 <p>广义而言，在通过Wi-Fi连接到CAP的中央AP和一个或多个扩展器的星形拓扑（如当前实现中假定的）中，应该考虑AP转向的点取决于哪个AP正在服务一个特定的STA。这是因为不仅要考虑STA对其服务AP的信号强度，还要考虑其流量必须通过网络占用的路径。</p>
 <p>由于家庭环境中的大多数客户端流量要么是注册到互联网，要么是注册到连接到CAP的设备，所以仅当STA信号强度才能优化，如果STA过早地移动到扩展器上，可能会降低性能。当范围扩展器将数据转发到CAP时，这种移动会导致性能下降，这是由于额外的Wi-Fi跳转引起的，反之亦然。另一方面，尽管距离扩展器的信号强度仍然从STA的角度来看仍然足够，但接近范围扩展器的STA可能更好地被CAP服务。</p>
 <p>下图显示了这种权衡的图示。这里，当客户端处于阴影区域时，最好由扩展器提供服务。 然而，当它处于非阴影区域时，尽管它可以看到范围扩展器信号强度很强，但它最好由CAP提供。</p>
@@ -476,7 +476,7 @@
 <li>NOTE  即使节点没有分配转向槽，仍然允许某些形式的转向。 具体地，允许空转转向，因为期望它将限于对中等利用率没有影响（因为当前空闲的STA在转向之后更有可能不继续空闲）。 主动降级转向，AP转向和干扰避免转向（IAS）也是允许的，因为这样做是为了确保客户端不会突然失去Wi-Fi连接。</li>
 </ul>
 <p>最后，重要的是网络中的所有节点具有相同的转向配置参数（第16.2节所述），以便它们具有每个STA的转向状态的一致视图。 目前没有确保这样的消息传递，因此在调整配置参数时必须注意在所有节点上进行相同的更改。</p>
-<h4 id="7-14-1-2-Implementation-Details"><a href="#7-14-1-2-Implementation-Details" class="headerlink" title="7.14.1.2 Implementation Details"></a>7.14.1.2 Implementation Details</h4><p>实现多AP协调转向的大部分逻辑利用为单个AP转向开发的代码。 为了支持重用此代码，适用于单AP和多AP情况的代码内置到名为liblbcmnlibs.so的共享库中。 在大多数模块中，定义了特定的扩展点，其中可以在lbd源树中提供单个AP转向的实现，并且可以在水源树中提供用于多AP转向的实现。 所有这些多AP实现方面都包含在水源树的wlb目录中。 以下是每个模块的多AP方面：</p>
+<h4 id="Implementation-Details"><a href="#Implementation-Details" class="headerlink" title="Implementation Details"></a>Implementation Details</h4><p>实现多AP协调转向的大部分逻辑利用为单个AP转向开发的代码。 为了支持重用此代码，适用于单AP和多AP情况的代码内置到名为liblbcmnlibs.so的共享库中。 在大多数模块中，定义了特定的扩展点，其中可以在lbd源树中提供单个AP转向的实现，并且可以在水源树中提供用于多AP转向的实现。 所有这些多AP实现方面都包含在水源树的wlb目录中。 以下是每个模块的多AP方面：</p>
 <ul>
 <li>bandmon - 实现CAP上转向槽的循环分配和在RE上等待这样的分配的逻辑。 还负责平均从pcwService接收的中等利用率报告，并在响应平均利用请求请求时提供这些报告。</li>
 <li>estimator - 为处理包含远程节点BSS的802.11k信标报告增加了新的逻辑。 具体来说，它使用拓扑数据库（基于IEEE1905.1拓扑消息传递中的一些供应商特定TLV）来解析远程BSS的物理层能力（空间流数，标准和传输功率），以便可以 用于估计速率和通话时间。 该模块的多AP版本还添加了未包含在报告中的相同频带BSS的估计（例如在不同信道上操作的那些）。</li>
@@ -486,8 +486,10 @@
 <li>wlanif - 该模块包含附加的逻辑，以便能够将BSSIDs从其内部表示解析出来，即使这些BSSID在远程节点上也是如此。 在远程节点情况下，使用拓扑数据库中的信息完成分辨率（由IEEE1905.1拓扑消息传递）。 该模块还确保在用于扩展器自动模式切换的IE中设置Wi-Fi自组织网络（SON）模式功能，如部分</li>
 </ul>
 <p>除了现有模块的多AP版本，还有一个名为steermsg的新模块。 该模块包含发送和接收上述转向协调消息的代码。 它还负责在收到STA信息响应（或其他消息中包含的类似信息）时更新站数据库中的信息。</p>
-<h4 id="7-14-1-3-Available-Debugging-Information"><a href="#7-14-1-3-Available-Debugging-Information" class="headerlink" title="7.14.1.3 Available Debugging Information"></a>7.14.1.3 Available Debugging Information</h4><p>实现多AP协调转向的模块的调试CLI与其单个AP实现不变。 但是，当手动执行AP转向（使用steerexec转向）时，必须知道AP ID作为MAC地址后的第一个参数。 如果网络中只有两个AP（CAP和一个RE），则假设另一个AP的ID为0，通常是安全的。另一方面，在多AP网络中，可以在两AP中检测到远端AP 从运行到运行的顺序。 要确定哪个AP是哪个，请使用td s debug CLI命令。 此输出的示例如下所示。</p>
-<h3 id="7-14-2-Adaptive-Path-Selection"><a href="#7-14-2-Adaptive-Path-Selection" class="headerlink" title="7.14.2 Adaptive Path Selection"></a>7.14.2 Adaptive Path Selection</h3><h4 id="7-14-2-1-Design-Overview"><a href="#7-14-2-1-Design-Overview" class="headerlink" title="7.14.2.1 Design Overview"></a>7.14.2.1 Design Overview</h4><p>目前市场上的许多扩展器是双频双向并发的，并且在两个频带上连接到主AP（这里称为中央AP或CAP）。 如下图所示，可以将这样的网络视为在每个频带上具有回程接口，并且在每个频带上提供与附近STA的连接的AP接口（称为接入接口）。</p>
+<h4 id="Available-Debugging-Information"><a href="#Available-Debugging-Information" class="headerlink" title="Available Debugging Information"></a>Available Debugging Information</h4><p>实现多AP协调转向的模块的调试CLI与其单个AP实现不变。 但是，当手动执行AP转向（使用steerexec转向）时，必须知道AP ID作为MAC地址后的第一个参数。 如果网络中只有两个AP（CAP和一个RE），则假设另一个AP的ID为0，通常是安全的。另一方面，在多AP网络中，可以在两AP中检测到远端AP 从运行到运行的顺序。 要确定哪个AP是哪个，请使用td s debug CLI命令。 此输出的示例如下所示。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">@ td s</div><div class="line">Topology Discovery Service module status:</div><div class="line">Mode of operation: Relaying device</div><div class="line">IEEE 1905.1 mode: QCA Enhanced</div><div class="line">Hy-Fi 1.0 compatibility: Supported</div><div class="line">-- ME:</div><div class="line">QCA IEEE 1905.1 device: 00:03:7F:15:F9:75, IPv4 address: 192.168.1.1</div><div class="line">Local interfaces:</div><div class="line">Interface name Medium Type MAC Address Contention PHY</div><div class="line">Capabilities</div><div class="line">ath0 WLAN5G 00:34:56:78:1D:1D 149</div><div class="line">80MHz,4,VHT,9,20</div><div class="line">ath1 WLAN2G 8C:FD:F0:00:E4:93 11</div><div class="line">20MHz,4,HT,7,28</div><div class="line">eth1 ETHER 00:03:7F:15:F9:75 255</div><div class="line">Legacy Devices:</div><div class="line">Interface eth1:</div><div class="line">00:02:B3:3F:DD:C3</div><div class="line">-- DB (1 entries):</div><div class="line"><span class="comment">#1: QCA IEEE 1905.1 device: 00:03:7F:3F:04:4B, IPv4 address:</span></div><div class="line">192.168.1.191 (message ID: 00107; ts: 1436466636)</div><div class="line">Remote connections (Directly connected to self):</div><div class="line">Interface name Medium Type MAC Address MID Direct Legacy</div><div class="line">Bridge TS Contention PHY Capabilities</div><div class="line">ath0 WLAN5G 06:34:56:78:D8:D8 00107 Yes No</div><div class="line">1436466623 149</div><div class="line">ath1 WLAN2G 92:FD:F0:00:E1:F2 00107 Yes No</div><div class="line">1436466623 11</div><div class="line">Remote connections (Not directly connected to self):</div><div class="line">Index Medium Type MAC Address Contention PHY Capabilities</div><div class="line">0 WLAN5G 00:34:56:78:D8:D8 149 80MHz,4,VHT,9,28</div><div class="line">1 WLAN2G 8C:FD:F0:00:E1:F2 11 20MHz,4,HT,7,28</div><div class="line">3 ETHER 00:03:7F:3F:04:4B 255</div><div class="line">4 ETHER 00:03:7F:85:D5:75 255</div><div class="line">0 Bridged addresses:</div><div class="line">message ID: 00000, time stamp: 1436466636</div><div class="line">Address Interface Interface Type</div></pre></td></tr></table></figure>
+<p>在此输出中要注意的主要方面是分配给DB部分中每个条目的编号。 要在转向时将其用作AP标识符，请从数字中减去一个。</p>
+<h3 id="Adaptive-Path-Selection"><a href="#Adaptive-Path-Selection" class="headerlink" title="Adaptive Path Selection"></a>Adaptive Path Selection</h3><h4 id="Design-Overview-1"><a href="#Design-Overview-1" class="headerlink" title="Design Overview"></a>Design Overview</h4><p>目前市场上的许多扩展器是双频双向并发的，并且在两个频带上连接到主AP（这里称为中央AP或CAP）。 如下图所示，可以将这样的网络视为在每个频带上具有回程接口，并且在每个频带上提供与附近STA的连接的AP接口（称为接入接口）。</p>
 <p>传统上，这些DBDC扩展器实现了在向上游发送流量时使用的接口的固定选择。这通常是为了避免网络中可能导致广播风暴的桥接环路。这样的固定转发方案也可以与纯粹作为学习桥梁的CAP一起工作，因为CAP将在单个接口上学习RE（无论是有线还是无线）之后的RE和客户端的MAC地址。这意味着上行链路和下行链路路径将相同，并最终由RE选择上行链路路径的方式控制。</p>
 <p>通常使用两个固定转发模型，即将流量转发到与与RE相关联的STA所使用的相同信道上的回程接口或将转发流量转发到另一个频带上的接口。这些方案中的每一种都有优缺点。交叉频段方法消除了访问链路和回程链路之间自我争用的影响，有时可以导致更好的性能。然而，由于2.4GHz和5GHz（例如通常为20MHz和80MHz）的带宽不同，这种交叉频带转发可导致2.4GHz回程接口成为在5GHz上相关客户的瓶颈。另一方面，相同的频带桥接可能导致另一频带的利用不足。根据客户端在整个频段的分布情况，这可能会导致所有客户端的性能显着降低。</p>
 <p>自适应路径选择（APS）允许在CAP和RE都实现该算法时，在每个目的地或甚至每个流的基础上（具有下面的一些限制）可以采用不同的转发路径。该算法有三个核心方面，即循环避免，拓扑和链路度量收集，以及实际的路径选择和负载平衡。这些将依次被考虑。</p>
@@ -512,7 +514,7 @@
 <p>自适应路径选择中的第二个过程是可以将活动流移动到新接口的负载平衡过程。通过其目的地MAC地址和数据包中的某些字段（通常是源地址和目标地址和端口号）的8位哈希识别流。由于散列的大小受限制，两个不同的流可能映射到相同的散列。然而，请注意，如果它们注定为两个不同的MAC地址，则它们仍将被视为单独的流。</p>
 <p>该流程移动过程可以通过网络拓扑的变化以及通道上的介质利用率上升到高于可配置值（默认为70％）时触发。对于拓扑变化，算法根据可用容量寻找新的接口。响应中等订阅是一个多步骤的过程。首先，超额认购界面上的所有流量都按照对中等利用率的贡献进行排名。然后，从最高贡献者开始，检查具有到目的地的链接的每个接口。如果找到一个具有可配置量（默认值为10％）的接口比流量更多的容量，则选择该接口。如果没有找到接口，则检查下一个最高流。这个过程一直持续到一个流动被移动或一定数量的流量被检查，没有一个候选人。</p>
 <p>在由于过度订阅而使流动移动之后，任何进一步的负载平衡被延迟，直到更新的媒体利用信息可用。这样可以防止太多的流动被移动，因为它们对利用率的影响尚未得到充分反映。</p>
-<h4 id="7-14-2-2-Implementation-Details"><a href="#7-14-2-2-Implementation-Details" class="headerlink" title="7.14.2.2 Implementation Details"></a>7.14.2.2 Implementation Details</h4><p>自适应路径选择的实现被分为两个组件，其中一个组件位于控制路径中，另一个组件位于数据路径中。</p>
+<h4 id="Implementation-Details-1"><a href="#Implementation-Details-1" class="headerlink" title="Implementation Details"></a>Implementation Details</h4><p>自适应路径选择的实现被分为两个组件，其中一个组件位于控制路径中，另一个组件位于数据路径中。</p>
 <p><strong><em>Control Path - hyd</em></strong></p>
 <p>控制路径部分负责配置桥接器，并根据拓扑和链路量度变化选择路径。 hyd守护进程包含控制路径实现。 实现路径选择的关键模块如下：</p>
 <ul>
@@ -660,7 +662,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -730,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-14-Multi-AP-Coordinated-Steering-and-Adaptive-Path-Selection"><span class="nav-number">1.</span> <span class="nav-text">7.14 Multi-AP Coordinated Steering and Adaptive Path Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-14-1-Multi-AP-Coordinated-Steering"><span class="nav-number">1.1.</span> <span class="nav-text">7.14.1 Multi-AP Coordinated Steering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-1-1-Design-Overview"><span class="nav-number">1.1.1.</span> <span class="nav-text">7.14.1.1 Design Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-1-2-Implementation-Details"><span class="nav-number">1.1.2.</span> <span class="nav-text">7.14.1.2 Implementation Details</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-1-3-Available-Debugging-Information"><span class="nav-number">1.1.3.</span> <span class="nav-text">7.14.1.3 Available Debugging Information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-14-2-Adaptive-Path-Selection"><span class="nav-number">1.2.</span> <span class="nav-text">7.14.2 Adaptive Path Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-2-1-Design-Overview"><span class="nav-number">1.2.1.</span> <span class="nav-text">7.14.2.1 Design Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-14-2-2-Implementation-Details"><span class="nav-number">1.2.2.</span> <span class="nav-text">7.14.2.2 Implementation Details</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AP-Coordinated-Steering"><span class="nav-number">1.</span> <span class="nav-text">Multi-AP Coordinated Steering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Design-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Design Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Implementation-Details"><span class="nav-number">1.2.</span> <span class="nav-text">Implementation Details</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Available-Debugging-Information"><span class="nav-number">1.3.</span> <span class="nav-text">Available Debugging Information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adaptive-Path-Selection"><span class="nav-number">2.</span> <span class="nav-text">Adaptive Path Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Design-Overview-1"><span class="nav-number">2.1.</span> <span class="nav-text">Design Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Implementation-Details-1"><span class="nav-number">2.2.</span> <span class="nav-text">Implementation Details</span></a></li></ol></li></ol></div>
             
 
           </div>
