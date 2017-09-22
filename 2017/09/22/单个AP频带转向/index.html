@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Advance Study,WIFI,Qualcomm," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="嵌入式领域的码农和coding爱好者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuleisoochow">
-<meta property="og:url" content="http://yoursite.com/categories/Wireless/index.html">
+<meta name="description" content="16.2 Single AP band steeringWi-Fi自组织网络（Wi-Fi SON）频带转向在负载平衡守护程序（lbd）中带来一些新的转向机制和算法，以处理更多的场景，并利用新的Wi-Fi设备支持的功能。 Wi-Fi SON实现中最重要的变化是引入802.11v BSS过渡管理作为转向的首选方法。 这种基于标准的机制对终端客户端的破坏性较小，因为它向他们指出了要转换到的首选BSS。">
+<meta name="keywords" content="Advance Study,WIFI,Qualcomm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单个AP频带切换">
+<meta property="og:url" content="http://yoursite.com/2017/09/22/单个AP频带转向/index.html">
 <meta property="og:site_name" content="yuleisoochow">
-<meta property="og:description" content="嵌入式领域的码农和coding爱好者">
+<meta property="og:description" content="16.2 Single AP band steeringWi-Fi自组织网络（Wi-Fi SON）频带转向在负载平衡守护程序（lbd）中带来一些新的转向机制和算法，以处理更多的场景，并利用新的Wi-Fi设备支持的功能。 Wi-Fi SON实现中最重要的变化是引入802.11v BSS过渡管理作为转向的首选方法。 这种基于标准的机制对终端客户端的破坏性较小，因为它向他们指出了要转换到的首选BSS。">
 <meta property="og:locale" content="yulei">
+<meta property="og:updated_time" content="2017-09-22T07:35:45.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuleisoochow">
-<meta name="twitter:description" content="嵌入式领域的码农和coding爱好者">
+<meta name="twitter:title" content="单个AP频带切换">
+<meta name="twitter:description" content="16.2 Single AP band steeringWi-Fi自组织网络（Wi-Fi SON）频带转向在负载平衡守护程序（lbd）中带来一些新的转向机制和算法，以处理更多的场景，并利用新的Wi-Fi设备支持的功能。 Wi-Fi SON实现中最重要的变化是引入802.11v BSS过渡管理作为转向的首选方法。 这种基于标准的机制对终端客户端的破坏性较小，因为它向他们指出了要转换到的首选BSS。">
 
 
 
@@ -132,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Wireless/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/22/单个AP频带转向/"/>
 
 
 
 
 
-  <title>分类: Wireless | yuleisoochow</title>
+  <title>单个AP频带切换 | yuleisoochow</title>
   
 
 
@@ -163,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,251 +303,242 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Wireless<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/22/单个AP频带转向/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yulei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yuleisoochow">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/09/22/单个AP频带转向/" itemprop="url">
-              
-                <span itemprop="name">单个AP频带切换</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">单个AP频带切换</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-22T18:00:00+08:00"
-              content="2017-09-22" >
-          09-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-22T18:00:00+08:00">
+                2017-09-22
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Wireless/" itemprop="url" rel="index">
+                    <span itemprop="name">Wireless</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article</span>
+                
+                <span title="Words count in article">
+                  3,605
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time</span>
+                
+                <span title="Reading time">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/20/自适应路径选择/" itemprop="url">
-              
-                <span itemprop="name">自适应路径选择</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-20T18:00:00+08:00"
-              content="2017-09-20" >
-          09-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/27/Low_RSSI_Threshold_Issue/" itemprop="url">
-              
-                <span itemprop="name">Low RSSI Threshold Issue</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-27T18:00:00+08:00"
-              content="2017-08-27" >
-          08-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/26/Multi-AP_Auto_Steering_testing_guide/" itemprop="url">
-              
-                <span itemprop="name">Multi-AP Auto Steering testing guide</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-26T18:00:00+08:00"
-              content="2017-08-26" >
-          08-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/24/Manual_AP_Steering/" itemprop="url">
-              
-                <span itemprop="name">Manual AP Steering</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-24T18:00:00+08:00"
-              content="2017-08-24" >
-          08-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/23/Repeater模式切换/" itemprop="url">
-              
-                <span itemprop="name">Repeater模式切换</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-23T18:00:00+08:00"
-              content="2017-08-23" >
-          08-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/22/多AP协调转向/" itemprop="url">
-              
-                <span itemprop="name">多AP协调转向</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-22T18:00:00+08:00"
-              content="2017-08-22" >
-          08-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/22/Qualcomm平台SON自动配置的命令实现/" itemprop="url">
-              
-                <span itemprop="name">Qualcomm平台SON自动配置的命令实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-22T18:00:00+08:00"
-              content="2017-08-22" >
-          08-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="16-2-Single-AP-band-steering"><a href="#16-2-Single-AP-band-steering" class="headerlink" title="16.2 Single AP band steering"></a>16.2 Single AP band steering</h2><p>Wi-Fi自组织网络（Wi-Fi SON）频带转向在负载平衡守护程序（lbd）中带来一些新的转向机制和算法，以处理更多的场景，并利用新的Wi-Fi设备支持的功能。</p>
+<p>Wi-Fi SON实现中最重要的变化是引入802.11v BSS过渡管理作为转向的首选方法。 这种基于标准的机制对终端客户端的破坏性较小，因为它向他们指出了要转换到的首选BSS。 这样做的意思是，AP可以利用它来引导正在主动向AP发送数据的客户端，其流量只有很小的中断，并限于对应用程序的可察觉的影响。 更多移动设备开始支持这一标准，期望随着STA寻求多频段操作（MBO）认证，这将进一步增加。 因为STA对此请求的响应方式各不相同，所以实现包含一些算法来表征每STA的行为，并相应地调整转向逻辑。 更多细节可以在下面找到。</p>
+<a id="more"></a>
+<h3 id="16-2-2-Types-of-steering-and-conditions"><a href="#16-2-2-Types-of-steering-and-conditions" class="headerlink" title="16.2.2 Types of steering and conditions"></a>16.2.2 Types of steering and conditions</h3><p>这个阶段有三种主要的转向类型。 它们是预关联转向，空闲后关联转向和主动后关联转向。 预关联转向仅在过载条件下完成，而关联转向的两种风格可以基于过载并基于每STA条件来完成。 这些中的每一个在下面的部分中更详细地描述。</p>
+<h4 id="16-2-2-1-Pre-association-steering"><a href="#16-2-2-1-Pre-association-steering" class="headerlink" title="16.2.2.1 Pre-association steering"></a>16.2.2.1 Pre-association steering</h4><p>预关联转向旨在将双频段连接到不过载的信道。 当一分钟的平均中等利用率超过70％时，通道被认为是超载的。 虽然这种情况成立，但如果AP看到双波段STA发送探测请求，并且非重载信道上的探测请求超过可配置的阈值（20 dB），则会安装一个黑名单，并在超载频道上保留探测响应，以鼓励 STA在非重载信道上关联。 请注意，该逻辑与第1阶段实现中的逻辑略有不同，因为即使在尝试将预关联转向2.4 GHz时，也会检查RSSI。 这种变化是为了考虑2.4 GHz最大发射功率可能小于5 GHz的调节域。</p>
+<p>请注意，只有满足避免过于频繁转向的条件，客户才能进行预先协调。 此外，转向安全机制仍然适用于确保如果持续试图与黑名单BSS相关联，则协调组协调转移的协调员并不孤立。 有关这些机制的详细信息，请参见第7.13.5节。</p>
+<h4 id="16-2-2-2-Idle-post-association-steering"><a href="#16-2-2-2-Idle-post-association-steering" class="headerlink" title="16.2.2.2 Idle post-association steering"></a>16.2.2.2 Idle post-association steering</h4><p>AP通过查找STA不发送任何非空上行链路数据包的时间段（默认为10秒）监视所有相关STA的活动。选择这个值来解释一些STA会定期发送数据包（如网关地址每隔15秒的一个ARP）作为一种保持活动的形式。由于分组类型没有被检查（主要是出于性能原因），这些保持活动分组可能导致STA从不被分类为空闲。通过使用较短的定时器，这些背景/保持活动数据包中的大多数可以被忽略。</p>
+<p>当双频带客户端变为空闲时，评估其上行链路RSSI以确定它是否将成为转向不同信道的候选者。该评估通过将非服务信道上的上行RSSI与可配置阈值进行比较来完成。非服务通道上的这种RSSI可以通过两种机制之一获得。首先，如果客户端最近在通道上发送了足够的探测请求，则这些探测器的平均值用于与阈值进行比较。如果没有接收到信道上的足够的探测，则基于服务信道RSSI来计算估计。如果AP对于客户端没有最近的服务信道RSSI信息，则它将发送一系列QoS空数据分组，以基于这些分组的ACK估计其上行链路RSSI。</p>
+<p>非服务信道RSSI的估计尝试调整2.4GHz和5GHz之间的典型路径损耗差异（以保守的方式）。与阶段1不同，该估计现在也考虑了在服务信道和非服务信道之间的传输功率的增量。如果候选信道的发送功率比服务信道低，则也用于调整估计。然而，如果非服务信道具有更高的发送功率，则这不是用于调整估计，因为许多客户端将不能够利用这种增加的功率。这种新的逻辑有助于考虑不同频带或子频段之间最大传输功率差异较大的监管领域。下面显示用于估计的方程式，其符号形式和默认配置参数。对于所使用的确切方程，请参见下面的非服务上行RSSI估计部分</p>
+<p>不管如何获得非服务信道RSSI，然后将其与阈值进行比较，以确定是否应该进行转向。在非过载条件下，为升级转向（2.4 GHz至5 GHz）和降级转向（5 GHz至2.4 GHz）定义了单独的阈值。在过载条件下，跨越频带的共同阈值用于怠速转向。非过载转向的默认阈值有效地禁用了降级转向的两个原因。首先，一旦信号变得足够弱，现代Wi-Fi客户端一般会从5GHz到2.4GHz漫游。其次，即使在相对较弱的RSSI中，如果在5 GHz中使用80 MHz信道，而在2.4 GHz中仅使用20 MHz信道，则5 GHz性能通常优于2.4 GHz。然而，如果希望将STA移动到2.4GHz，即使这可能导致峰值吞吐量下降，也可以调整这些阈值。过载转向的阈值允许升级和降级转向。</p>
+<p>一旦确定了引导客户端，就可以使用两种机制之一。继续支持第一阶段用于传统STA的机制。该方法首先在目前服务的VAP（以及目标VAP之外的任何其他VAP）上安装黑名单，然后强制解除STA的关联。在黑名单VAP上保留探测器响应，直到STA再次关联或其中一个转向安全机构中止转向。如果STA仍然尝试使用以前提供的VAP进行身份验证，那么它将被拒绝。这通常足以鼓励STA选择不同的BSS。</p>
+<p>本版本中支持的另一个导向机制是802.11v BSS过渡管理（BTM）。 这是一种标准定义的机制，其允许AP向STA指示它应该移动到新的BSS，并且为候选BSS的列表提供优先级。 对于在关联时发布此功能的客户端，AP将尝试使用此机制，而不是传统机制。 然而，由于不是所有的STA都以相同的方式遵守BTM请求，所以AP还将默认使用黑名单和探测器响应预扣方案来提高转换的可靠性。 这种混合方法可以被禁用，并且可能变得不太必要，因为STA通过Wi-Fi联盟中的多频带操作程序认证。</p>
+<h4 id="16-2-2-3-Active-post-association-steering"><a href="#16-2-2-3-Active-post-association-steering" class="headerlink" title="16.2.2.3 Active post-association steering"></a>16.2.2.3 Active post-association steering</h4><p>对于支持802.11k和802.11v的客户端，频带转向现在可以利用这些标准来控制它们，同时他们正在积极交换数据。由于STA再次关联所需的时间，传统的转向机制是不可能的。这可能会导致应用程序失败。另一方面，使用802.11v BSS过渡管理，支持它的STA能够在更短的时间内（通常远低于一秒）进行转换，并且应用程序在转换受影响有限的情况下可以生存。</p>
+<p>如下面的“BTM合规性概述”部分所述，为了使STA能够进行主动转向，首先必须使用BTM成功地进行空转。一旦客户被视为有效的指导资格，必须满足某些条件才能被积极引导。对于非过载转向，触发条件取决于服务频段。在2.4GHz时，必须超过上行链路RSSI阈值和下行PHY速率阈值。需要这两个条件以确保STA都具有足够强的信号，并且没有遇到高的分组错误率（也可能存在于5GHz）。</p>
+<p>另一方面，对于当前正在服务于5GHz的STA，降低到配置的阈值以下的上行链路RSSI或下行链路PHY速率足以开始主动转向评估处理。这种更宽松的策略试图解释即使RSSI显着下降，PHY速率也可能保持相对较高的事实。</p>
+<p>请注意，默认配置将这些降级非过载阈值设置为低，以致不会触发降级主动转向。类似于空转方向盘，这是因为在STA漫游逻辑开始之前，AP必须将阈值设置得相对较高才能触发转向。但是，这样做可能会导致该STA的峰值吞吐量降低，因此它一般最好让STA做出自己的决定。</p>
+<p> 一旦发生非过载转向的触发，AP通过使用Tx和Rx字节计数器（在1秒间隔的开始和结束时采样）估计该STA的下行链路和上行链路吞吐量。在第二个样本中，也获得最后一个下行PHY速率并用于计算当前服务信道上估计的通话时间。然后，AP选择非过载信道（优先于另一频带上的那些非重载信道），并请求STA在候选信道上执行802.11k信标测量。</p>
+<p>从该下行链路RSSI测量，AP考虑到候选信道（包括带宽，空间流数和phy模式）的AP和STA的能力两者都尝试估计该客户端将实现的MCS。从此和先前测量的吞吐量，计算通风时间值。然后该值用于确定STA是否可以适应候选信道而不引起过载。这是通过将估计的通话时间添加到最后测量的媒体利用率并将结果与​​安全阈值进行比较来完成的。如果不超过该阈值，则允许转向进行，并且将估计的通话时间加到保持的预计通话时间增加，直到获得新的媒体利用测量。</p>
+<p>对于过载主动转向，触发是本身的过载事件。发生这种情况时，AP采取的第一步是估算超载频道上所有主动转向合格客户端的通话时间。当触发单个客户端测量时，使用与上述相同的技术完成此操作。然后按照降序的播出时间对这些值进行排序。然后选择用于卸载的候选通道（使用与上述相同的机制）。依次要求每个STA执行802.11k信标测量，以评估候选通道的性能。由此，以与上述相同的方式作出决定，由于存在过载的风险，将其转向该通道或不指导。</p>
+<p>还应用一个附加条件是，当转向5GHz信道时，目标信道上的估计速率必须是比当前信道上的速率更好的可配置量。一旦对一个STA的处理完成，则考虑使用新的802.11k信标测量请求进行下一个STA。该过程一直持续到所有主动转向符合条件的客户端都用尽，或者估计已经从当前过载的信道中移除的通话时间量将导致中等利用率降至安全阈值以下。</p>
+<p>任何时候执行主动转向（用于卸载目的或由于STA的RSSI和/或MCS值都跨越阈值），紧随其后的介质利用率测量将触发转向停电期。 在此期间，不允许有效的升级转向，从而可以获得对以前主动转向器的影响（中等利用率）的更准确的评估，而不需要进一步的主动操纵来增加数据的不确定性。</p>
+<p>仍然允许主动降级转向（尽管它们不会被默认配置触发），因为它们的主要目的是确保STA可以保持连接而不是提高性能。 在这种停电期间，也可以使用空闲转向器，因为这些客户端当前不活动，因此除非它们变得活跃，否则不应影响利用率测量。</p>
+<h3 id="16-2-3-BTM-compliance-overview"><a href="#16-2-3-BTM-compliance-overview" class="headerlink" title="16.2.3 BTM compliance overview"></a>16.2.3 BTM compliance overview</h3><p>鉴于各种STA实施方式对802.11v BSS过渡管理（BTM）请求的响应有多大的变化，新的逻辑已被纳入频带转向以对行为进行分类。 在非常高的层次上，逻辑包括以下内容：</p>
+<ul>
+<li>要求在空闲状态下的BTM转向成功，甚至尝试主动转向。<ul>
+<li>这是在假设在空闲条件下拒绝或以其他方式不能移动到所需BSS的STA更有可能在活动时进行相同的。</li>
+</ul>
+</li>
+<li>如果空闲的BTM转向失败，则恢复到传统转向，并将设备视为BTM不友好的一段时间（如果空闲BTM转向持续发生故障，则具有指数退避）。</li>
+<li>如果BTM主动转向重复出现故障，则在主动转向不友好定时器到期之前不再执行主动转向（如果发生故障，则具有指数退避），然后BTM空闲转向成功。</li>
+<li>如果上行链路RSSI下降到服务信道上的阈值（默认为12 dB），请使用基于BTM的转向，而不使用黑名单，并且不会对客户端发生故障。<ul>
+<li>如果非服务渠道的RSSI估计不准确，这是一种保守的做法。</li>
+</ul>
+</li>
+<li>如果客户端接受BTM请求但指定了不同的BSSID，请使用基于BTM的转向程序，而不使用黑名单，并且不会对客户端发生故障。<ul>
+<li>这有助于解决多个AP在同一ESS中运行的环境，客户端可能会看到更强大的AP，从而决定过渡到它。</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Advance-Study/" rel="tag"># Advance Study</a>
+          
+            <a href="/tags/WIFI/" rel="tag"># WIFI</a>
+          
+            <a href="/tags/Qualcomm/" rel="tag"># Qualcomm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/20/自适应路径选择/" rel="next" title="自适应路径选择">
+                <i class="fa fa-chevron-left"></i> 自适应路径选择
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -553,6 +546,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -573,8 +570,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -649,6 +655,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#16-2-Single-AP-band-steering"><span class="nav-number">1.</span> <span class="nav-text">16.2 Single AP band steering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#16-2-2-Types-of-steering-and-conditions"><span class="nav-number">1.1.</span> <span class="nav-text">16.2.2 Types of steering and conditions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#16-2-2-1-Pre-association-steering"><span class="nav-number">1.1.1.</span> <span class="nav-text">16.2.2.1 Pre-association steering</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-2-2-2-Idle-post-association-steering"><span class="nav-number">1.1.2.</span> <span class="nav-text">16.2.2.2 Idle post-association steering</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-2-2-3-Active-post-association-steering"><span class="nav-number">1.1.3.</span> <span class="nav-text">16.2.2.3 Active post-association steering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-2-3-BTM-compliance-overview"><span class="nav-number">1.2.</span> <span class="nav-text">16.2.3 BTM compliance overview</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -762,10 +784,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
