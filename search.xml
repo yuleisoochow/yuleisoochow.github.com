@@ -8,9 +8,21 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Qualcomm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[802.11k无线测量]]></title>
+    <url>%2F2017%2F09%2F20%2F802.11k%E6%97%A0%E7%BA%BF%E6%B5%8B%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[802.11k AP Assisted RoamingIEEE 802.11k-2008定义了无线资源管理（RRM）机制，使具有802.11k能力的客户端更好地了解它们所存在的RF环境，从而帮助客户进行更好的漫游。 这篇blog记录了我在测试Qualcomm SON功能时对802.11k协议的抓包及分析。 首先AP在发送的beacon包中的”Tagged parameters”字段包含有”RM Enabled Capabilities”信息，表明该AP支持802.11k协议。 客户端尝试连接AP的Association request包中的”Tagged parameters”字段也包含有”RM Enabled Capabilities”信息，表明该客户端支持802.11k协议。 然后AP响应的Association response包中的”Tagged parameters”字段任然包含有”RM Enabled Capabilities”信息。 具有802.11k能力的客户端将从当前AP动态请求邻居报告。 这将有助于找到潜在的目标AP漫游。 AP会在响应包中包含该网络中的邻居AP。从包中可以看出有一个邻居AP，BSSID为”00:1f:d4:05:b3:97” 当满足一定条件时，AP发送”Radio Messument Request”包要求客户端报告自己的网络信息。 在客户端回复的”Radio Messument Response”包中包含每个AP的RCPI:Received channel power indicator和RSNI:Received Signal to Noise Indicator信息，供服务AP确定该客户端离哪个AP比较近。 AP根据收到的Beacon Report报文决定将该客户端转向到信号更好的BSSID上，已提供更好的服务，该转向是通过802.11v协议实现的。]]></content>
+      <categories>
+        <category>Wireless</category>
+      </categories>
+      <tags>
+        <tag>WIFI</tag>
+        <tag>802.11</tag>
       </tags>
   </entry>
   <entry>
@@ -21,8 +33,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Qualcomm</tag>
       </tags>
   </entry>
@@ -34,8 +46,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Steer</tag>
       </tags>
   </entry>
@@ -47,8 +59,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Steer</tag>
       </tags>
   </entry>
@@ -60,8 +72,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Steer</tag>
       </tags>
   </entry>
@@ -73,8 +85,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Qualcomm</tag>
       </tags>
   </entry>
@@ -86,8 +98,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Command</tag>
       </tags>
   </entry>
@@ -99,8 +111,8 @@
         <category>Wireless</category>
       </categories>
       <tags>
-        <tag>Advance Study</tag>
         <tag>WIFI</tag>
+        <tag>Advance Study</tag>
         <tag>Qualcomm</tag>
       </tags>
   </entry>
